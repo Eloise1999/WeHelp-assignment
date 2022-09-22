@@ -1,0 +1,148 @@
+@media (max-width:1920px) {
+
+    /* banner */
+    .banner {
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+        font-weight: bold;
+    }
+
+
+    .nav {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav>li {
+        list-style: none;
+        margin-right: 20px;
+    }
+
+    #menu{
+        display: none;
+    }
+
+    /* welcome */
+    .welcome {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 300px;
+        font-size: 40px;
+        font-weight: bold;
+        background-color: #ddecf6;
+    }
+
+/* mainArea*/
+    .container_promotion {
+        display: flex;
+        justify-content: center;
+    }
+
+    .promotion {
+        display: flex;
+        width: 580px;
+        height: 50px;
+        margin: 30px 10px 0px;
+        background-color: #c8dce6;
+    }
+
+    .promotion_text {
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+        font-size: 20px;
+    }
+
+    .container_card {
+        display: flex;
+        justify-content: center;
+    }
+
+    .card {
+        position: relative;
+        width: 280px;
+        margin: 20px 10px 0px;
+    }
+
+    .card_img img{
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .card_text {
+        position: absolute;
+        bottom: 0px;
+        text-align: center;
+        width: 100%;
+        padding: 10px;
+        z-index: 1;
+        font-size: 20px;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .star{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+
+    .star > img{
+        width: 30px;
+        padding: 10px;
+    }
+
+    .all_cards {
+        margin-bottom: 50px;
+    }
+
+
+}
+
+@media(max-width:1201px){
+    .container_promotion{
+        flex-wrap: wrap;
+    }
+
+    .promotion{
+        width: 44%;
+    }
+
+    .container_card{
+        flex-wrap: wrap;
+    }
+
+    .card {
+        width: 44%;
+    }
+
+    .card_img{
+        width: 100%;
+    }
+}
+
+@media(max-width:601px){
+    .nav > li{
+        display: none;
+    }
+
+    #menu{
+        display: block;
+    }
+
+    .promotion{
+        width: 90%;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+}
