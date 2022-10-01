@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05</title>
+</head>
+<body>
+    <script>
+        function twoSum(nums, target) {
+            let newMap = new Map();
+            for (let i = 0; i < nums.length; i++) {
+                newMap.set(nums[i], i);
+            }
+            for (let x = 0; x < nums.length; x++) {
+                let goal = target - nums[x];
+                if (newMap.has(goal) && x != newMap.get(goal))
+                    return [x, newMap.get(goal)];
+            }
+        }
+        let result = twoSum([2, 11, 7, 15], 9);
+        console.log(result);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02</title>
+</head>
+<body>
+    <script>
+        function avg(data) {
+            var total_salary = 0;
+            var average_salary = 0;
+            var employeesNums = data.employees.length;
+            var n = 0;
+            
+            // 判斷員工數是否為0
+            if (data.employees != 0){
+            
+                //利用for迴圈拿出陣列中的物件
+                for (let i=0; i<employeesNums; i++){
+                    name = data.employees[i].name;
+                    manager = data.employees[i].manager;
+                    salary = data.employees[i].salary;
+                    
+                    //判斷 manager 是否為 False 後 計算False員工個數與總薪資
+                    if (manager == false){
+                        n++;
+                        total_salary += salary;
+                    }
+
+                    //計算平均薪資
+                    average_salary = total_salary / n;
+
+                }
+
+                console.log("average_salary = " +  average_salary);
+            }else{
+                console.log("average_salary = " +  average_salary);
+            };
+
+        }
+
+        avg({
+            "employees": [
+                {
+                    "name": "John",
+                    "salary": 30000,
+                    "manager": false
+                },
+                {
+                    "name": "Bob",
+                    "salary": 60000,
+                    "manager": true
+                },
+                {
+                    "name": "Jenny",
+                    "salary": 50000,
+                    "manager": false
+                },
+                {
+                    "name": "Tony",
+                    "salary": 40000,
+                    "manager": false
+                }
+            ]
+        }); // 呼叫 avg 函式
+
+
+    </script>
+</body>
+</html>
