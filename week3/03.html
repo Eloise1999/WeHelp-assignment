@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>week3 assignment</title>
+</head>
+<body>
+    <div class="banner">
+        <div class="logo">My Website</div>
+            <ul class="nav">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+                <a href="#" id="menu"><img src="./img/menu.png" alt="error"></a>
+            </ul>
+            
+    </div>
+
+    <div class="welcome">
+        Welcome to MyHome
+    </div>
+
+    <div class="container_promotion">
+
+        <div class="promotion" id="promotion_text_container_0">
+            <div class="promotion_img" id="promotion_img_container_0">
+                <img id="promotion_img_0" src="./img/picture.jpeg" alt="error" width="80" height="50">
+            </div>
+            <div class="promotion_text" id="promotion_text_0">Promotion 1</div>
+        </div>
+
+        <div class="promotion" id="promotion_text_container_1">
+            <div class="promotion_img" id="promotion_img_container_1">
+                <img id="promotion_img_1" src="./img/picture.jpeg" alt="error" width="80" height="50">
+            </div>
+            <div class="promotion_text" id="promotion_text_1">Promotion 2</div>
+        </div>
+
+    </div>
+        
+    
+    <div class="all_cards">
+        <div class="container_card">
+    
+            <div class="card" id="card_text_container_2">
+                <div class="card_img" id="card_img_container_2">
+                    <img id="card_img_2" src="./img/picture.jpeg" alt="error" width="280">
+                </div>
+                <div class="card_text" id="card_text_2">Title 1</div>
+            </div>
+    
+            <div class="card" id="card_text_container_3">
+                <div class="card_img" id="card_img_container_3">
+                    <img id="card_img_3" src="./img/picture.jpeg" alt="error" width="280">
+                </div>
+                <div class="card_text" id="card_text_3">Title 2</div>
+            </div>
+    
+            <div class="card" id="card_text_container_4">
+                <div class="card_img" id="card_img_container_4">
+                    <img id="card_img_4" src="./img/picture.jpeg" alt="error" width="280">
+                </div>
+                <div class="card_text" id="card_text_4">Title 3</div>
+            </div>
+    
+            <div class="card" id="card_text_container_5">
+                <div class="card_img" id="card_img_container_5">
+                    <img id="card_img_5" src="./img/picture.jpeg" alt="error" width="280">
+                </div>
+                <div class="card_text" id="card_text_5">Title 4</div>
+            </div>
+        </div>
+    
+        <div class="container_card">
+    
+            <div class="card" id="card_text_container_6">
+                <div class="card_img" id="card_img_container_6">
+                    <img id="card_img_6" src="./img/picture.jpeg" alt="error" width="280">
+                </div>
+                <div class="card_text" id="card_text_6">Title 5</div>
+            </div>
+    
+            <div class="card" id="card_text_container_7">
+                <div class="card_img" id="card_img_container_7">
+                    <img id="card_img_7" src="./img/picture.jpeg" alt="error" width="280">
+                </div>
+                <div class="card_text" id="card_text_7">Title 6</div>
+            </div>
+    
+            <div class="card" id="card_text_container_8">
+                <div class="card_img" id="card_img_container_8">
+                    <img id="card_img_8" src="./img/picture.jpeg" alt="error" width="280">
+                </div>
+                <div class="card_text" id="card_text_8">Title 7</div>
+            </div>
+    
+            <div class="card" id="card_text_container_9">
+                <div class="card_img" id="card_img_container_9">
+                    <img id="card_img_9" src="./img/picture.jpeg" alt="error" width="280">
+                </div>
+                <div class="card_text" id="card_text_9">Title 8</div>
+            </div>
+        </div>
+    
+</div>
+
+<script>
+    // 連線網路資料
+    fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json").then(function(response){
+        return response.json();
+    }).then(function(data){
+        
+        // 圖片網址處理(放至array方便讀取)
+        let img_list = [];
+        let img_url = "";
+
+        for (let i=0; i<10; i++){
+            img_url = "https" + data["result"]["results"][i]["file"].split("https")[1];
+            img_list.push(img_url);
+
+        }
+
+        // promotion 處理：刪除原本元素並新增元素
+        for (let i=0; i<2; i++){
+            let promotion_img_container = document.querySelector("#promotion_img_container_" + [i]);
+            let promotion_text_container = document.querySelector("#promotion_text_container_" + [i]);
+            let promotion_img = document.querySelector("#promotion_img_" + [i]);
+            let promotion_text = document.querySelector("#promotion_text_" + [i]);
+            let promotion_new_img = document.createElement("img");
+            let promotion_new_text = document.createElement("div");
+
+            promotion_img_container.removeChild(promotion_img);
+            promotion_img_container.appendChild(promotion_new_img);
+            promotion_new_img.setAttribute("src", img_list[i]);
+            promotion_new_img.setAttribute("width", "80");
+            promotion_new_img.setAttribute("height", "50");
+
+            promotion_text_container.removeChild(promotion_text);
+            promotion_text_container.appendChild(promotion_new_text);
+            promotion_new_text.textContent = data["result"]["results"][i]["stitle"];
+            promotion_new_text.setAttribute("class", "promotion_text");
+        }
+
+        // card 處理
+        for(let i=2; i<10; i++){
+            let card_img_container = document.querySelector("#card_img_container_" + [i]);
+            let card_text_container = document.querySelector("#card_text_container_" + [i]);
+            let card_img = document.querySelector("#card_img_" + [i]);
+            let card_text = document.querySelector("#card_text_" + [i]);
+            let card_new_img = document.createElement("img");
+            let card_new_text = document.createElement("div");
+
+            card_img_container.removeChild(card_img);
+            card_img_container.appendChild(card_new_img);
+            card_new_img.setAttribute("src", img_list[i]);
+            card_new_img.setAttribute("width", "280");
+
+            card_text_container.removeChild(card_text);
+            card_text_container.appendChild(card_new_text);
+            card_new_text.textContent = data["result"]["results"][i]["stitle"];
+            card_new_text.setAttribute("class", "card_text");
+        }
+
+    })
+</script>
+    
+</body>
+</html>
