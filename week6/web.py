@@ -11,7 +11,7 @@ web = Flask(__name__, static_folder="files", static_url_path="/")
 database = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="1234",
+    password="",
     database="website"
 )
 
