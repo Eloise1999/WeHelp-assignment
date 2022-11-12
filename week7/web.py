@@ -137,10 +137,10 @@ def apiMember():
     if request.method == "PATCH":
         if session["user_state"] == "logged_in":
             try:
-                name = session["name"]
                 newName = request.json["name"]
-                data = (newName, name)
-                update_command = "update member set name=%s where name=%s"
+                id = session["id"]
+                data = (newName, id)
+                update_command = "update member set name=%s where id=%s"
                 cursor.execute(update_command, data)
 
             except:
